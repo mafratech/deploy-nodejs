@@ -9,14 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy NodeJS app
-      - uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_KEY }}
-          username: ${{ secrets.SSH_USER }}
           passphrase: ${{ secrets.SSH_PASS }}
+          username: ${{ secrets.SSH_USER }}
           port: 22
-      - run: cd deploy-nodejs
-      - run: git pull
-      - run: npm install
-      - run: pm2 restart index.js
+          script: |
+            cd deploy-nodejs
+            git pull
+            npm install
+            pm2 restart index.js
