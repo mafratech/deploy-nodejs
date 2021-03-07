@@ -8,8 +8,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Connection on server
-        uses: appleboy/ssh-action@master
+      # - name: Connection on server
+      - uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_KEY }}
@@ -20,7 +20,7 @@ jobs:
             ls
             cd deploy-nodejs
             ls
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           # key: ${{ secrets.SSH_KEY }}
           # passphrase: ${{ secrets.SSH_PASS }}
