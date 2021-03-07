@@ -16,11 +16,9 @@ jobs:
           passphrase: ${{ secrets.SSH_PASS }}
           username: ${{ secrets.SSH_USER }}
           port: 22
-          script: |
-            cd deploy-nodejs
-      - name: Pulling
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.REPO_SSH_KEY }}
-          passphrase: ${{ secrets.REPO_SSH_PASS }}
-          script: ls
+          - name: Pulling
+            uses: appleboy/ssh-action@master
+            with:
+              key: ${{ secrets.REPO_SSH_KEY }}
+              passphrase: ${{ secrets.REPO_SSH_PASS }}
+              script: ls
