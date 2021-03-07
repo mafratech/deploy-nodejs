@@ -18,15 +18,9 @@ jobs:
           port: 22
           script: |
             cd deploy-nodejs
-            npm install
       - name: Pulling
-        # uses: actions/checkout@v2
-        run: ls
-      #       cd deploy-nodejs
-      #       touch text.txt
-      # - name: Installing dependencies
-      #   run: npm install
-      #   working-directory: /home/deployer/deploy-nodejs
-      # - name: Restart service
-      #   run: pm2 restart index.js
-      #   working-directory: /home/deployer/deploy-nodejs
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.REPO_SSH_KEY }}
+          passphrase: ${{ secrets.REPO_SSH_PASS }}
+          script: ls
