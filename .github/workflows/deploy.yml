@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Connection on server
         uses: appleboy/ssh-action@master
@@ -18,11 +18,14 @@ jobs:
           port: 22
       - name: Pulling
         uses: actions/checkout@v2
+        working-directory: /home/deployer/deploy-nodejs
         with:
           script: |
             cd deploy-nodejs
             touch text.txt
       - name: Installing dependencies
         run: npm install
+        working-directory: /home/deployer/deploy-nodejs
       - name: Restart service
         run: pm2 restart index.js
+        working-directory: /home/deployer/deploy-nodejs
