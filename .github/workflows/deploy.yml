@@ -19,7 +19,6 @@ jobs:
           script: cd deploy-nodejs
       - name: Pulling
         uses: actions/checkout@v2
-        run: git pull
       - name: Installing dependencies
         run: npm install
       - name: Restart service
