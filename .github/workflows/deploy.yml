@@ -19,7 +19,7 @@ jobs:
       - name: Connection on server
         uses: appleboy/ssh-action@master
         with:
-          ssh-key: ${{ secrets.REPO_SSH_KEY }}
+          key: ${{ secrets.REPO_SSH_KEY }}
           passphrase: ${{ secrets.REPO_SSH_PASS }}
           script: |
             cd deploy-nodejs
