@@ -9,14 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Connection on server
-        uses: appleboy/ssh-action@master
+        uses: actions/checkout@v2
         with:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASS }}
           username: ${{ secrets.SSH_USER }}
           port: 22
-          script: ls
+          script: |
+            cd deploy-nodejs
+            npm install
       # - name: Pulling
       #   uses: actions/checkout@v2
       #   with:
