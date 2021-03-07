@@ -16,13 +16,11 @@ jobs:
           passphrase: ${{ secrets.SSH_PASS }}
           username: ${{ secrets.SSH_USER }}
           port: 22
-      - name: Connection on server
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.REPO_SSH_KEY }}
-          passphrase: ${{ secrets.REPO_SSH_PASS }}
-          script: |
-            cd deploy-nodejs
-            git pull
-            npm install
-            pm2 restart index.js
+          script: cd deploy-nodejs
+      - name: Pulling
+        uses: actions/checkout@v2
+        run: git pull
+      - name: Installing dependencies
+        run: npm install
+      - name: Restart service
+        run: pm2 restart index.js
