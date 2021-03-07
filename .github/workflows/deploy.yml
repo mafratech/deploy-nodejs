@@ -24,9 +24,5 @@ jobs:
             touch text.txt
       - name: Installing dependencies
         run: npm install
-        with:
-          script: cd deploy-nodejs
       - name: Restart service
         run: pm2 restart index.js
-        with:
-          script: cd deploy-nodejs
