@@ -22,8 +22,8 @@ jobs:
             ls
       - uses: actions/checkout@v2
         with:
-          key: ${{ secrets.REPO_SSH_KEY }}
-          passphrase: ${{ secrets.REPO_SSH_PASS }}
-          script: |
-            ls
-            npm install
+          ssh-key: ${{ secrets.REPO_SSH_KEY }}
+          persist-credentials: ${{ secrets.REPO_SSH_PASS }}
+          # script: |
+          #   ls
+          #   npm install
