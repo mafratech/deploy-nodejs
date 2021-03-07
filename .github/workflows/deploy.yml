@@ -20,10 +20,10 @@ jobs:
             ls
             cd deploy-nodejs
             ls
-      - uses: actions/checkout@v2
+      - uses: appleboy/ssh-action@master
         with:
-          # key: ${{ secrets.SSH_KEY }}
-          # passphrase: ${{ secrets.SSH_PASS }}
+          key: ${{ secrets.REPO_SSH_KEY }}
+          passphrase: ${{ secrets.REPO_SSH_PASS }}
           script: |
             ls
             npm install
