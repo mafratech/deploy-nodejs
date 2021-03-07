@@ -16,10 +16,17 @@ jobs:
           passphrase: ${{ secrets.SSH_PASS }}
           username: ${{ secrets.SSH_USER }}
           port: 22
-          script: cd deploy-nodejs
       - name: Pulling
         uses: actions/checkout@v2
+        with:
+          script: |
+            cd deploy-nodejs
+            touch text.txt
       - name: Installing dependencies
         run: npm install
+        with:
+          script: cd deploy-nodejs
       - name: Restart service
         run: pm2 restart index.js
+        with:
+          script: cd deploy-nodejs
