@@ -16,6 +16,5 @@ jobs:
           username: ${{secrets.SSH_USER}}
           script: |
             cd deploy-nodejs
-            npm install
-            pm2 restart index.js
+            ls
             echo 'Deploy realizado com sucesso.'
