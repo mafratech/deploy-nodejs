@@ -16,8 +16,14 @@ jobs:
           passphrase: ${{ secrets.SSH_PASS }}
           username: ${{ secrets.SSH_USER }}
           port: 22
-          script: cd deploy-nodejs
+          script: |
+            ls
+            cd deploy-nodejs
+            ls
+        uses: actions/checkout@v2
         with:
-          key: ${{ secrets.REPO_SSH_KEY }}
-          passphrase: ${{ secrets.REPO_SSH_PASS }}
-          script: ls
+          # key: ${{ secrets.SSH_KEY }}
+          # passphrase: ${{ secrets.SSH_PASS }}
+          script: |
+            ls
+            npm install
