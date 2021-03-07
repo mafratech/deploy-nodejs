@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy NodeJS app
+      - name: Connection on server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -18,6 +18,12 @@ jobs:
           port: 22
           script: |
             cd deploy-nodejs
-            git pull
-            npm install
+      - name: Build and runs
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.REPO_SSH_KEY }}
+          passphrase: ${{ secrets.REPO_SSH_PASS }}
+          script: |
+            git pull |
+            npm install |
             pm2 restart index.js
