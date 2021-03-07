@@ -18,12 +18,12 @@ jobs:
           port: 22
           script: |
             cd deploy-nodejs
-      - name: Build and runs
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.REPO_SSH_KEY }}
-          passphrase: ${{ secrets.REPO_SSH_PASS }}
-          script: |
-            git pull |
-            npm install |
-            pm2 restart index.js
+        - name: Build and runs
+          uses: appleboy/ssh-action@master
+          with:
+            key: ${{ secrets.REPO_SSH_KEY }}
+            passphrase: ${{ secrets.REPO_SSH_PASS }}
+            script: |
+              git pull |
+              npm install |
+              pm2 restart index.js
