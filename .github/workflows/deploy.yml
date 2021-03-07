@@ -19,10 +19,10 @@ jobs:
           script: |
             cd deploy-nodejs
             npm install
-      # - name: Pulling
-      #   uses: actions/checkout@v2
-      #   with:
-      #     script: |
+      - name: Pulling
+        #   uses: actions/checkout@v2
+        with:
+          script: ls
       #       cd deploy-nodejs
       #       touch text.txt
       # - name: Installing dependencies
