@@ -20,7 +20,7 @@ jobs:
             ls
             cd deploy-nodejs
             ls
-      - uses: appleboy/ssh-action@master
+      - uses: actions/checkout@v2
         with:
           key: ${{ secrets.REPO_SSH_KEY }}
           passphrase: ${{ secrets.REPO_SSH_PASS }}
