@@ -17,9 +17,10 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           port: 22
           script: ls
-      - uses: actions/checkout@v2
       - run: ls
       - run: cd deploy-nodejs
+      - run: ls
+      - uses: actions/checkout@v2
       - run: npm install
         # with:
         #   ssh-key: ${{ secrets.REPO_SSH_KEY }}
