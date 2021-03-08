@@ -8,23 +8,27 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # - name: Connection on server
-      - uses: appleboy/ssh-action@master
+      - name: Connection on server
+        # - uses: appleboy/ssh-action@master
+        #   with:
+        #     host: ${{ secrets.SSH_HOST }}
+        #     key: ${{ secrets.SSH_KEY }}
+        #     passphrase: ${{ secrets.SSH_PASS }}
+        #     username: ${{ secrets.SSH_USER }}
+        #     port: 22
+        #     script: ls
+        # - run: ls
+        # - run: cd deploy-nodejs
+        # - run: ls
+        uses: actions/checkout@v2
         with:
-          host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.SSH_PASS }}
-          username: ${{ secrets.SSH_USER }}
-          port: 22
-          script: ls
-      - run: ls
-      - run: cd deploy-nodejs
-      - run: ls
-      - uses: actions/checkout@v2
-      - run: npm install
-        # with:
-        #   ssh-key: ${{ secrets.REPO_SSH_KEY }}
-        # token: ${{ secrets.REPO_SSH_PASS }}
-        # script: |
-        #   ls
-        #   npm install
+          ssh-key: ${{ secrets.REPO_SSH_KEY }}
+          token: ${{ secrets.REPO_SSH_PASS }}
+          path: deploy-nodejs
+      # - run: npm install
+      # with:
+      #   ssh-key: ${{ secrets.REPO_SSH_KEY }}
+      # token: ${{ secrets.REPO_SSH_PASS }}
+      # script: |
+      #   ls
+      #   npm install
